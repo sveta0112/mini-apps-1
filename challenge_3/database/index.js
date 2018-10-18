@@ -24,13 +24,37 @@ var getAll = function(callback) {
 };
 
 
+// var insertOne = function(username, email, password, line_1, line_2, city, state, zip_code, credit_card_num, expiry_date, cvv, billing, callback) {
+  
+//   const query = `INSERT INTO userInfo (username, email, password, line_1, line_2, city, state, zip_code, credit_card_num, expiry_date, cvv, billing) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+//   console.log(query);
+//   connection.query(query, [username, email, password, line_1, line_2, city, state, zip_code, credit_card_num, expiry_date, cvv, billing], function (error, results, fields) {
+//     callback(error, null);
+//   });
+// };
+
+
 var insertOne = function(username, email, password, line_1, line_2, city, state, zip_code, credit_card_num, expiry_date, cvv, billing, callback) {
   
-  const query = `INSERT INTO userInfo (username, email, password, line_1, line_2, city, state, zip_code, credit_card_num, expiry_date, cvv, billing) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-  console.log(query);
-  connection.query(query, [username, email, password, line_1, line_2, city, state, zip_code, credit_card_num, expiry_date, cvv, billing], function (error, results, fields) {
-    callback(error, null);
+  //const query = `INSERT INTO userInfo (username, email, password, line_1, line_2, city, state, zip_code, credit_card_num, expiry_date, cvv, billing) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  //console.log(query);
+  //connection.query(query, [username, email, password, line_1, line_2, city, state, zip_code, credit_card_num, expiry_date, cvv, billing], function (error, results, fields) {
+  //  callback(error, null);
+  //});
+
+  
+var sqlQuery = 'INSERT INTO userInfo (username, email, password, line_1, line_2, city, state, zip_code, credit_card_num, expiry_date, cvv, billing) VALUES' + '("' + username + '","' + email + '","' + password + '","' + line_1 + '","' + line_2 + '","' + city + '","' + state + '",' + zip_code + ',' + credit_card_num + ',' + expiry_date + ',' + cvv + ',' + billing + ')'
+console.log(sqlQuery);
+  
+connection.query( sqlQuery, function (err, results) {
+  if(err){
+    callback(err, null);
+  }else{
+    callback(null, results);
+  }
+ 
   });
+
 };
 
 
