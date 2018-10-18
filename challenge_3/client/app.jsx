@@ -1,4 +1,4 @@
-
+//some
 class App extends React.Component {
   
   constructor(props) {
@@ -95,9 +95,9 @@ class App extends React.Component {
     return(
       <form>
    	    <label>Line-1</label>
-   	  	<input type="number" name="line_1" onChange={this.handleChange}/>
+   	  	<input type="text" name="line_1" onChange={this.handleChange}/>
    	  	<label>Line-2</label>
-   	  	<input type="number" name="line_2" onChange={this.handleChange}/>
+   	  	<input type="text" name="line_2" onChange={this.handleChange}/>
    	  	<label>City</label>
    	  	<input type="text" name="city" onChange={this.handleChange}/>
    	  	<label>State</label>
@@ -160,7 +160,7 @@ class App extends React.Component {
         data: JSON.stringify({
           username: this.state.username,
           email :this.state.email,
-          password :this.state.email,
+          password :this.state.password,
           line_1:this.state.line_1,
           line_2: this.state.line_2,
           city:this.state.city,
@@ -168,13 +168,13 @@ class App extends React.Component {
           zip_code:this.state.zip_code,
           credit_card_num:this.state.credit_card_num,
           expiry_date:this.state.expiry_date,
-          cvv:this.state.email,
+          cvv:this.state.cvv,
           billing:this.state.billing
           
         }),
         success: (data) => {
           this.setState({ username: '', email: '', password: '',line_1: '', line_2: '', city: '', state: '', zip_code: '', credit_card_num: '', expiry_date: '', cvv: '', billing: ''});
-          this.props.onSuccess();
+          //this.props.onSuccess();
         }
       });
   }
